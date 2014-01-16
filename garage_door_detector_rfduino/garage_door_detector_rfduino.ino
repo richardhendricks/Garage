@@ -15,7 +15,7 @@ const unsigned int ILLUM_LED_P =  1;         //This LED lights up the garage doo
 const unsigned int DETECT_LED_P = 2;         //This is the anode side of the detect LED
 const unsigned int DETECT_LED_N = 3;         //This is the cathode side of the detect LED
 
-const unsigned int CAP_CHARGE_DELAY = 200;   //Delay waiting for diode to charge in reverse bias in microseconds
+const unsigned int CAP_CHARGE_DELAY = 200000;   //Delay waiting for diode to charge in reverse bias in microseconds
 const unsigned int MAX_LOOP = 20000;         //How many times to run through the loop waiting for the diode to discharge
 
 const unsigned int MAX_MEASURE = 1;          //How many times to measure the LED discharge
@@ -76,7 +76,7 @@ void sendData( int data, unsigned int time )
   for( k=0; k<time; k++ )
   {
     RFduinoBLE.sendInt( data );
-    RFduiono_ULPDelay( SECONDS(1) );
+    RFduino_ULPDelay( SECONDS(1) );
   }
   RFduinoBLE.end();
 }
@@ -114,6 +114,6 @@ void loop() {
   //Update any internal variables - make sure they are valid first
 
   //Sleep for 5 seconds
-  RFduiono_ULPDelay( SECONDS(sleep_time) );
+  RFduino_ULPDelay( SECONDS(sleep_time) );
 
 }
